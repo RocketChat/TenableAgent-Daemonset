@@ -22,7 +22,10 @@ This repository contains Kubernetes resource files for deploying the Tenable age
 
 1. Create a Sealed Secrets key inside your cluster. Replace `YOUR TENABLE KEY GOES HERE` with your tenable.io sync token and convert it to a base64 format:
 
-`echo -n '{"link":{"host": "cloud.tenable.com","port": 443,"key": "YOUR TENABLE KEY GOES HERE","name": "$NODE_NAME", "groups": ["agent-group"]}}' | base64`
+
+```
+echo -n '{"link":{"host": "cloud.tenable.com","port": 443,"key": "YOUR TENABLE KEY GOES HERE","name": "$NODE_NAME", "groups": ["agent-group"]}}' | base64
+```
 
 2. Insert the base64 encoded string in the [secrets.yaml](https://github.com/RocketChat/tenable-agent-kubernetes-daemonset/blob/main/secrets.yaml) file and use kubeseal to encrypt it:
 
@@ -36,11 +39,17 @@ cat secret.yaml | kubeseal \
 
 3. Apply the sealed secrets to your cluster:
 
-`kubectl apply -f sealed-secret.yaml`
+
+```
+kubectl apply -f sealed-secret.yaml
+```
 
 4. Deploy the DaemonSet with the following command:
 
-`kubectl apply -f manifest/nessus-pod.yaml`
+
+```
+kubectl apply -f manifest/nessus-pod.yaml
+```
 
 After a few minutes, you should see your node information in your [tenable.io sensors list](https://cloud.tenable.com/tio/app.html#/settings/sensors/agents/agents-list)
 
@@ -58,13 +67,18 @@ docker build -t tenable-agent-image .
 
 To verify that the Tenable agent is running on all nodes in the cluster, run:
 
-`kubectl get pods -n nessus`
+
+```
+kubectl get pods -n nessus
+```
 
 You should see one pod for each node in the cluster, with a status of `Running`.
 
 If you encounter any issues, you can check the logs for the Tenable agent pods using:
 
-`kubectl logs -n nessus <pod-name>`
+```
+kubectl logs -n nessus <pod-name>
+```
 
 ## Maintenance
 
