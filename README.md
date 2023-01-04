@@ -22,8 +22,6 @@ This repository contains Kubernetes resource files for deploying the Tenable age
 
 1. Create a Sealed Secrets key inside your cluster. Replace `YOUR TENABLE KEY GOES HERE` with your tenable.io sync token and convert it to a base64 format:
 
-First, you need to create a **Sealed Secrets** key inside your cluster, if you check the [secrets.yaml](https://github.com/RocketChat/tenable-agent-kubernetes-daemonset/blob/main/secrets.yaml) file you will see that inside this file there's a base64 encoded string and if you run a `base64 -d` the following result will show:
-
 `echo -n '{"link":{"host": "cloud.tenable.com","port": 443,"key": "YOUR TENABLE KEY GOES HERE","name": "$NODE_NAME", "groups": ["agent-group"]}}' | base64`
 
 2. Insert the base64 encoded string in the [secrets.yaml](https://github.com/RocketChat/tenable-agent-kubernetes-daemonset/blob/main/secrets.yaml) file and use kubeseal to encrypt it:
