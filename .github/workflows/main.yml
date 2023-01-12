@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile/Dockerfile
+          file: ./Dockerfile/Dockerfile
           push: true
           tags: rocketchat/darwiny:latest
     
