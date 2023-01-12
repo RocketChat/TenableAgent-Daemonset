@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+    - github-action-build-image
 
 jobs:
   build_image:
@@ -27,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Dockerfile/Dockerfile
+          file: Dockerfile/Dockerfile
           push: true
           tags: rocketchat/darwiny:latest
     
