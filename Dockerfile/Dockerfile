@@ -10,9 +10,10 @@ RUN apt update -y && apt install -y --no-install-recommends gettext-base curl
 RUN curl -s -k $NESSUS_URL -o NessusAgent-install.deb
 
 #Check if the downloaded file have the same SHA256 hash provided by tenable in https://www.tenable.com/downloads/nessus-agents?loginAttempted=true
+#Aborts if failed
 
-RUN sha256sum NessusAgent-install.deb > sha256_signature.txt
-RUN sha256sum -c sha256_signature.txt
+RUN echo $NESSUS_SHA256 > sha256_signature.txt
+RUN if [ $(sha256sum -c sha256_signature.txt | awk -F ": " '{print $2}') != "OK" ]; then exit 1; else echo "Checksum OK"; fi;
 
 #Install Nessus
 
