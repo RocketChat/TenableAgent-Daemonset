@@ -13,7 +13,7 @@ RUN curl -s -k $NESSUS_URL -o NessusAgent-install.deb
 #Aborts if failed
 
 RUN echo $NESSUS_SHA256 > sha256_signature.txt
-RUN if [ $(sha256sum -c sha256_signature.txt | awk -F ": " '{print $2}') != "OK" ]; then exit 1; else echo "Checksum OK"; fi;
+RUN sha256sum -c sha256_signature.txt
 
 #Install Nessus
 
