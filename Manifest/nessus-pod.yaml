@@ -29,7 +29,7 @@ spec:
           emptyDir: {}
       initContainers:
       - name: mount-volumes
-        image: igorrincon/tenable-agent-kubernetes-daemonset:latest
+        image: rocketchat/darwiny:latest
         resources:
           limits:
             memory: "1000Mi"
@@ -55,7 +55,7 @@ spec:
           cp -r /opt/nessus_agent/* /mnt/nessus_files/
       containers:
         - name: tenable-agent
-          image: igorrincon/tenable-agent-kubernetes-daemonset:latest
+          image: rocketchat/darwiny:latest
           resources:
             limits:
               memory: "1000Mi"
