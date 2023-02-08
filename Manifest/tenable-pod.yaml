@@ -1,13 +1,13 @@
 apiVersion: v1 
 kind: Namespace
 metadata:
-  name: nessus
+  name: tenable
 ---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: tenable-agent-daemonset
-  namespace: nessus
+  namespace: tenable
 spec:
   selector:
     matchLabels:
@@ -66,7 +66,6 @@ spec:
           volumeMounts:
              - name: access-to-node-files
                mountPath: /mnt/host_files
-               readOnly: true
              - name: nessus-files-in-host
                mountPath: /mnt/host_files/opt/nessus_agent
           command: ["sh", "-c"]
