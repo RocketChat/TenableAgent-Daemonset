@@ -61,7 +61,7 @@ cd Dockerfile
 docker build -t tenable-agent-image . 
 ```
 
-**Important: Remember to change the reference of the image in `nessus-pod.yaml` if you build the dockerfile locally**
+**Important: Remember to change the reference of the image in `tenable-pod.yaml` if you build the dockerfile locally**
 
 ## Testing
 
