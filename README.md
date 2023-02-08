@@ -48,7 +48,7 @@ kubectl apply -f sealed-secret.yaml
 
 
 ```
-kubectl apply -f manifest/nessus-pod.yaml
+kubectl apply -f manifest/tenable-pod.yaml
 ```
 
 After a few minutes, you should see your node information in your [tenable.io sensors list](https://cloud.tenable.com/tio/app.html#/settings/sensors/agents/agents-list)
@@ -69,7 +69,7 @@ To verify that the Tenable agent is running on all nodes in the cluster, run:
 
 
 ```
-kubectl get pods -n nessus
+kubectl get pods -n tenable
 ```
 
 You should see one pod for each node in the cluster, with a status of `Running`.
@@ -77,9 +77,9 @@ You should see one pod for each node in the cluster, with a status of `Running`.
 If you encounter any issues, you can check the logs for the Tenable agent pods using:
 
 ```
-kubectl logs -n nessus <pod-name>
+kubectl logs -n tenable <pod-name>
 ```
 
 ## Maintenance
 
-To update the Tenable agent `image`, modify the image field in the `nessus-pod.yaml` file and apply the changes using `kubectl apply -f nessus-pod.yaml`.
+To update the Tenable agent `image`, modify the image field in the `tenable-pod.yaml` file and apply the changes using `kubectl apply -f tenable-pod.yaml`.
