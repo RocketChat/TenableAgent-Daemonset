@@ -66,7 +66,6 @@ spec:
           volumeMounts:
              - name: access-to-node-files
                mountPath: /mnt/host_files
-               readOnly: true
              - name: nessus-files-in-host
                mountPath: /mnt/host_files/opt/nessus_agent
           command: ["sh", "-c"]
