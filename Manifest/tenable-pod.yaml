@@ -61,8 +61,7 @@ spec:
               memory: "1000Mi"
               cpu: 1
             requests:
-              memory: "1000Mi"
-              cpu: 1
+              memory: "500Mi"
           volumeMounts:
              - name: access-to-node-files
                mountPath: /mnt/host_files
